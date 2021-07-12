@@ -3,35 +3,14 @@
         <title>WAIT | HOPE</title>
         <link>https://penn513.github.io/</link>
         <description>WAIT | HOPE</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 06 Mar 2020 21:29:01 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</lastBuildDate>
             <atom:link href="https://penn513.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Basic Markdown Syntax</title>
-    <link>https://penn513.github.io/basic-markdown-syntax/</link>
-    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <title>数据结构与算法 - 单调栈</title>
+    <link>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</link>
+    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
     <author>GP</author>
-    <guid>https://penn513.github.io/basic-markdown-syntax/</guid>
-    <description><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
-</item><item>
-    <title>Emoji Support</title>
-    <link>https://penn513.github.io/emoji-support/</link>
-    <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/emoji-support/</guid>
-    <description><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>]]></description>
-</item><item>
-    <title>Theme Documentation - Basics</title>
-    <link>https://penn513.github.io/theme-documentation-basics/</link>
-    <pubDate>Fri, 06 Mar 2020 21:29:01 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/theme-documentation-basics/</guid>
-    <description><![CDATA[<p>Discover what the Hugo - <strong>uBlog</strong> theme is all about and the core-concepts behind it.</p>]]></description>
-</item><item>
-    <title>Theme Documentation - Content</title>
-    <link>https://penn513.github.io/theme-documentation-content/</link>
-    <pubDate>Thu, 05 Mar 2020 15:58:26 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/theme-documentation-content/</guid>
-    <description><![CDATA[<p>Find out how to create and organize your content quickly and intuitively in <strong>uBlogger</strong> theme.</p>]]></description>
+    <guid>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</guid>
+    <description><![CDATA[性质 单调递减栈，能表示入栈元素左边第一个比它大的元素。入栈表明本身比栈顶小，出栈表面本身比栈顶大； 单调递增栈，能表示入栈元素左边第一个比它小]]></description>
 </item></channel>
 </rss>
