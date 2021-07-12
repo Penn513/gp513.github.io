@@ -31,7 +31,7 @@
                             "url": "https:\/\/penn513.github.io\/%E5%8D%95%E8%B0%83%E6%A0%88\/featured-image.png",
                             "width":  760 ,
                             "height":  519 
-                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  241 ,
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  399 ,
         "url": "https:\/\/penn513.github.io\/%E5%8D%95%E8%B0%83%E6%A0%88\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
         "publisher": {
             "@type": "Person",
@@ -187,7 +187,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>241 words
+                                <span class="svg-icon icon-pencil"></span>399 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>One minute
@@ -215,7 +215,8 @@
     <li>
       <ul>
         <li><a href="#性质">性质</a></li>
-        <li><a href="#例题---接雨水">例题 - 接雨水</a></li>
+        <li><a href="#例题-1---接雨水">例题 1 - 接雨水</a></li>
+        <li><a href="#例题-2---股票价格跨度">例题 2 - 股票价格跨度</a></li>
       </ul>
     </li>
   </ul>
@@ -224,7 +225,7 @@
 <li>单调递减栈，能表示入栈元素左边第一个比它大的元素。入栈表明本身比栈顶小，出栈表面本身比栈顶大；</li>
 <li>单调递增栈，能表示入栈元素左边第一个比它小的元素。入栈表明本身比栈顶大，出栈表面本身比栈顶小；</li>
 </ul>
-<h3 id="例题---接雨水" class="headerLink"><a href="#%e4%be%8b%e9%a2%98---%e6%8e%a5%e9%9b%a8%e6%b0%b4" class="header-mark"></a>例题 - 接雨水</h3><p><a href="https://leetcode-cn.com/problems/trapping-rain-water/">https://leetcode-cn.com/problems/trapping-rain-water/</a>
+<h3 id="例题-1---接雨水" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-1---%e6%8e%a5%e9%9b%a8%e6%b0%b4" class="header-mark"></a>例题 1 - 接雨水</h3><p><a href="https://leetcode-cn.com/problems/trapping-rain-water/">https://leetcode-cn.com/problems/trapping-rain-water/</a>
 
 
 
@@ -281,6 +282,81 @@
                     stack.pop()
             stack.append(right)
         return sumArea
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-2---股票价格跨度" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-2---%e8%82%a1%e7%a5%a8%e4%bb%b7%e6%a0%bc%e8%b7%a8%e5%ba%a6" class="header-mark"></a>例题 2 - 股票价格跨度</h3><p><a href="https://leetcode-cn.com/problems/online-stock-span/">https://leetcode-cn.com/problems/online-stock-span/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%8D%95%E8%B0%83%E6%A0%88/%E8%82%A1%E7%A5%A8%E8%B7%A8%E5%BA%A6.png" title="股票跨度" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%8D%95%E8%B0%83%E6%A0%88/%E8%82%A1%E7%A5%A8%E8%B7%A8%E5%BA%A6.png"
+            alt="股票跨度"
+        />
+    </a><figcaption class="image-caption">股票跨度</figcaption>
+    </figure>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%8D%95%E8%B0%83%E6%A0%88/%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6.gif" title="股票跨度-单调递减栈" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%8D%95%E8%B0%83%E6%A0%88/%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6.gif"
+            alt="股票跨度gif"
+        />
+    </a><figcaption class="image-caption">股票跨度-单调递减栈</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class StockSpanner:
+
+    def __init__(self):
+        self.stack = []
+
+    def next(self, price: int) -&gt; int:
+        if not self.stack or self.stack[-1][0] &gt; price:
+            self.stack.append((price, 1))
+            return 1
+
+        ans = 1
+        while self.stack and self.stack[-1][0] &lt;= price:
+            bottom = self.stack.pop()
+            ans += bottom[1]
+        self.stack.append((price, ans))
+        return ans
+
+# Your StockSpanner object will be instantiated and called as such:
+# obj = StockSpanner()
+# param_1 = obj.next(price)
 </code></pre></td></tr></table>
 </div>
 </div></div><footer>
