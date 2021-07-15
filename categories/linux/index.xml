@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - Category - WAIT | HOPE</title>
+        <link>https://penn513.github.io/categories/linux/</link>
+        <description>Linux - Category - WAIT | HOPE</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 14 Jul 2021 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://penn513.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - perf性能分析</title>
+    <link>https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</link>
+    <pubDate>Wed, 14 Jul 2021 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+    <description><![CDATA[perf也被称为perf_events，是一个面向event的观察工具，可用于性能剖析或内核故障排查。perf是内核的一部分，随内核发布。 事]]></description>
+</item></channel>
+</rss>

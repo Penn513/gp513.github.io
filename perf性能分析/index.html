@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>Linux - perf性能分析 | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/featured-image.png"/>
+<meta name="twitter:title" content="Linux - perf性能分析"/>
+<meta name="twitter:description" content="perf_events is an event-oriented observability tool, which can help you solve advanced performance and troubleshooting functions"/><meta name="Description" content="perf_events is an event-oriented observability tool, which can help you solve advanced performance and troubleshooting functions"><meta property="og:title" content="Linux - perf性能分析" />
+<meta property="og:description" content="perf_events is an event-oriented observability tool, which can help you solve advanced performance and troubleshooting functions" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" /><meta property="og:image" content="https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-14T15:58:26&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-14T15:58:26&#43;08:00" />
+
+<meta name="application-name" content="WAIT | HOPE">
+<meta name="apple-mobile-web-app-title" content="WAIT | HOPE"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - perf性能分析",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/penn513.github.io\/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/penn513.github.io\/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90\/featured-image.png",
+                            "width":  1500 ,
+                            "height":  1050 
+                        }],"genre": "posts","keywords": "Linux","wordCount":  2786 ,
+        "url": "https:\/\/penn513.github.io\/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90\/","datePublished": "2021-07-14T15:58:26+08:00","dateModified": "2021-07-14T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+        "publisher": {
+            "@type": "Person",
+            "name": "", "image": [
+            {
+            "@type": "ImageObject",
+            "url": "\/assets\/image\/sth.jpeg"
+            }
+            ]},"author": {
+                "@type": "Person",
+                "name": ""
+            },"description": "perf_events is an event-oriented observability tool, which can help you solve advanced performance and troubleshooting functions"
+    }
+    </script><script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https:\/\/penn513.github.io"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Linux",
+            "item": "https://penn513.github.io/categories/linux/"
+        },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Linux - perf性能分析"
+            }]
+    }
+</script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="WAIT | HOPE" class="header-logo logo-svg"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/"> Tags </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/"> Categories </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/"> Docs </a>
+                        </li><li>
+                            <a class="menu-item" href="/about/"> About </a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i>  </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <span class="svg-icon icon-search"></span>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <span class="svg-icon icon-cancel"></span>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <span class="svg-icon icon-loading"></span>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="WAIT | HOPE" class="header-logo"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                        <div class="search mobile" id="search-mobile">
+                            <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                                <span class="svg-icon icon-search"></span>
+                            </a>
+                            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                                <span class="svg-icon icon-cancel"></span>
+                            </a>
+                            <span class="search-button search-loading" id="search-loading-mobile">
+                                <span class="svg-icon icon-loading"></span>
+                            </span>
+                        </div>
+                        <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                            Cancel
+                        </a>
+                    </div><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/" title="">Tags</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/" title="">Categories</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/" title="">Docs</a>
+                        </li><li>
+                            <a class="menu-item" href="/about/" title="">About</a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i></a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div></header><main class="main">
+<div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+    
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li><a href="/categories/linux/">Linux </a></li><li>Linux - perf性能分析</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">Linux - perf性能分析</h1><div class="post-meta summary-post-meta"><span class="post-category meta-item">
+                                <a href="/categories/linux/"><span class="svg-icon icon-folder"></span>Linux</a>
+                            </span><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-14">2021-07-14</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>2786 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>6 minutes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="image-theme-classic">
+                        <img src="https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/featured-image.png" style="width: 100%">
+                    </div><div class="details toc" id="toc-static"  data-kept="">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#事件events">事件（Events）</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#命令">命令</a>
+          <ul>
+            <li><a href="#列出事件">列出事件</a></li>
+            <li><a href="#计数事件">计数事件</a></li>
+            <li><a href="#性能剖析">性能剖析</a></li>
+            <li><a href="#静态跟踪">静态跟踪</a></li>
+            <li><a href="#动态跟踪">动态跟踪</a></li>
+            <li><a href="#混合跟踪">混合跟踪</a></li>
+            <li><a href="#缓存">缓存</a></li>
+            <li><a href="#报告">报告</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                    </div><p>perf也被称为perf_events，是一个面向event的观察工具，可用于性能剖析或内核故障排查。perf是内核的一部分，随内核发布。</p>
+<h3 id="事件events" class="headerLink"><a href="#%e4%ba%8b%e4%bb%b6events" class="header-mark"></a>事件（Events）</h3><p>事件分类：</p>
+<ul>
+<li><strong>Hardware Events:</strong> CPU performance monitoring counters.</li>
+<li><strong>Software Events:</strong> These are low level events based on kernel counters. For example, CPU migrations, minor faults, major faults, etc.</li>
+<li><strong>Kernel Tracepoint Events:</strong> This are static kernel-level instrumentation points that are hardcoded in interesting and logical places in the kernel.</li>
+<li><strong>User Statically-Defined Tracing (USDT):</strong> These are static tracepoints for user-level programs and applications.</li>
+<li><strong>Dynamic Tracing:</strong> Software can be dynamically instrumented, creating events in any location. For kernel software, this uses the kprobes framework. For user-level software, uprobes.</li>
+<li><strong>Timed Profiling:</strong> Snapshots can be collected at an arbitrary frequency, using perf record -FHz. This is commonly used for CPU usage profiling, and works by creating custom timed interrupt events.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># perf list
+List of pre-defined events (to be used in -e):
+  cpu-cycles OR cycles                               [Hardware event]
+  instructions                                       [Hardware event]
+  cache-references                                   [Hardware event]
+  cache-misses                                       [Hardware event]
+  branch-instructions OR branches                    [Hardware event]
+  branch-misses                                      [Hardware event]
+  bus-cycles                                         [Hardware event]
+  stalled-cycles-frontend OR idle-cycles-frontend    [Hardware event]
+  stalled-cycles-backend OR idle-cycles-backend      [Hardware event]
+  ref-cycles                                         [Hardware event]
+  cpu-clock                                          [Software event]
+  task-clock                                         [Software event]
+  page-faults OR faults                              [Software event]
+  context-switches OR cs                             [Software event]
+  cpu-migrations OR migrations                       [Software event]
+  minor-faults                                       [Software event]
+  major-faults                                       [Software event]
+  alignment-faults                                   [Software event]
+  emulation-faults                                   [Software event]
+  L1-dcache-loads                                    [Hardware cache event]
+  L1-dcache-load-misses                              [Hardware cache event]
+  L1-dcache-stores                                   [Hardware cache event]
+[...]
+  rNNN                                               [Raw hardware event descriptor]
+  cpu/t1=v1[,t2=v2,t3 ...]/modifier                  [Raw hardware event descriptor]
+   (see &#39;man perf-list&#39; on how to encode it)
+  mem:&lt;addr&gt;[:access]                                [Hardware breakpoint]
+  probe:tcp_sendmsg                                  [Tracepoint event]
+[...]
+  sched:sched_process_exec                           [Tracepoint event]
+  sched:sched_process_fork                           [Tracepoint event]
+  sched:sched_process_wait                           [Tracepoint event]
+  sched:sched_wait_task                              [Tracepoint event]
+  sched:sched_process_exit                           [Tracepoint event]
+[...]
+# perf list | wc -l
+     657
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="示例" class="headerLink"><a href="#%e7%a4%ba%e4%be%8b" class="header-mark"></a>示例</h3><p>最近遇到个问题，程序的所有线程都被绑到0核上，但运行时并未使用<code>taskset</code>绑核。linux的绑核是通过系统调用<code>syscalls:sys_enter_sched_setaffinity</code>，进而考虑使用perf跟踪该系统调用，查看调用栈。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 开启事件跟踪
+perf record -g -e &#34;syscalls:sys_enter_sched_setaffinity&#34; -a
+
+# 另开启一个session，运行程序
+
+# 通过Ctrl+c结束perf，在当前路径生成perf.data
+
+# 查看调用栈
+perf script
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="命令" class="headerLink"><a href="#%e5%91%bd%e4%bb%a4" class="header-mark"></a>命令</h3><h4 id="列出事件" class="headerLink"><a href="#%e5%88%97%e5%87%ba%e4%ba%8b%e4%bb%b6" class="header-mark"></a>列出事件</h4><p>Listing Events</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Listing all currently known events:
+perf list
+
+# Listing sched tracepoints:
+perf list &#39;sched:*&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="计数事件" class="headerLink"><a href="#%e8%ae%a1%e6%95%b0%e4%ba%8b%e4%bb%b6" class="header-mark"></a>计数事件</h4><p>Counting Events</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># CPU counter statistics for the specified command:
+perf stat command
+
+# Detailed CPU counter statistics (includes extras) for the specified command:
+perf stat -d command
+
+# CPU counter statistics for the specified PID, until Ctrl-C:
+perf stat -p PID
+
+# CPU counter statistics for the entire system, for 5 seconds:
+perf stat -a sleep 5
+
+# Various basic CPU statistics, system wide, for 10 seconds:
+perf stat -e cycles,instructions,cache-references,cache-misses,bus-cycles -a sleep 10
+
+# Various CPU level 1 data cache statistics for the specified command:
+perf stat -e L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores command
+
+# Various CPU data TLB statistics for the specified command:
+perf stat -e dTLB-loads,dTLB-load-misses,dTLB-prefetch-misses command
+
+# Various CPU last level cache statistics for the specified command:
+perf stat -e LLC-loads,LLC-load-misses,LLC-stores,LLC-prefetches command
+
+# Using raw PMC counters, eg, counting unhalted core cycles:
+perf stat -e r003c -a sleep 5 
+
+# PMCs: counting cycles and frontend stalls via raw specification:
+perf stat -e cycles -e cpu/event=0x0e,umask=0x01,inv,cmask=0x01/ -a sleep 5
+
+# Count syscalls per-second system-wide:
+perf stat -e raw_syscalls:sys_enter -I 1000 -a
+
+# Count system calls by type for the specified PID, until Ctrl-C:
+perf stat -e &#39;syscalls:sys_enter_*&#39; -p PID
+
+# Count system calls by type for the entire system, for 5 seconds:
+perf stat -e &#39;syscalls:sys_enter_*&#39; -a sleep 5
+
+# Count scheduler events for the specified PID, until Ctrl-C:
+perf stat -e &#39;sched:*&#39; -p PID
+
+# Count scheduler events for the specified PID, for 10 seconds:
+perf stat -e &#39;sched:*&#39; -p PID sleep 10
+
+# Count ext4 events for the entire system, for 10 seconds:
+perf stat -e &#39;ext4:*&#39; -a sleep 10
+
+# Count block device I/O events for the entire system, for 10 seconds:
+perf stat -e &#39;block:*&#39; -a sleep 10
+
+# Count all vmscan events, printing a report every second:
+perf stat -e &#39;vmscan:*&#39; -a -I 1000
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="性能剖析" class="headerLink"><a href="#%e6%80%a7%e8%83%bd%e5%89%96%e6%9e%90" class="header-mark"></a>性能剖析</h4><p>Profiling</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Sample on-CPU functions for the specified command, at 99 Hertz:
+perf record -F 99 command
+
+# Sample on-CPU functions for the specified PID, at 99 Hertz, until Ctrl-C:
+perf record -F 99 -p PID
+
+# Sample on-CPU functions for the specified PID, at 99 Hertz, for 10 seconds:
+perf record -F 99 -p PID sleep 10
+
+# Sample CPU stack traces (via frame pointers) for the specified PID, at 99 Hertz, for 10 seconds:
+perf record -F 99 -p PID -g -- sleep 10
+
+# Sample CPU stack traces for the PID, using dwarf (dbg info) to unwind stacks, at 99 Hertz, for 10 seconds:
+perf record -F 99 -p PID --call-graph dwarf sleep 10
+
+# Sample CPU stack traces for the entire system, at 99 Hertz, for 10 seconds (&lt; Linux 4.11):
+perf record -F 99 -ag -- sleep 10
+
+# Sample CPU stack traces for the entire system, at 99 Hertz, for 10 seconds (&gt;= Linux 4.11):
+perf record -F 99 -g -- sleep 10
+
+# If the previous command didn&#39;t work, try forcing perf to use the cpu-clock event:
+perf record -F 99 -e cpu-clock -ag -- sleep 10
+
+# Sample CPU stack traces for a container identified by its /sys/fs/cgroup/perf_event cgroup:
+perf record -F 99 -e cpu-clock --cgroup=docker/1d567f4393190204...etc... -a -- sleep 10
+
+# Sample CPU stack traces for the entire system, with dwarf stacks, at 99 Hertz, for 10 seconds:
+perf record -F 99 -a --call-graph dwarf sleep 10
+
+# Sample CPU stack traces for the entire system, using last branch record for stacks, ... (&gt;= Linux 4.?):
+perf record -F 99 -a --call-graph lbr sleep 10
+
+# Sample CPU stack traces, once every 10,000 Level 1 data cache misses, for 5 seconds:
+perf record -e L1-dcache-load-misses -c 10000 -ag -- sleep 5
+
+# Sample CPU stack traces, once every 100 last level cache misses, for 5 seconds:
+perf record -e LLC-load-misses -c 100 -ag -- sleep 5 
+
+# Sample on-CPU kernel instructions, for 5 seconds:
+perf record -e cycles:k -a -- sleep 5 
+
+# Sample on-CPU user instructions, for 5 seconds:
+perf record -e cycles:u -a -- sleep 5 
+
+# Sample on-CPU user instructions precisely (using PEBS), for 5 seconds:
+perf record -e cycles:up -a -- sleep 5 
+
+# Perform branch tracing (needs HW support), for 1 second:
+perf record -b -a sleep 1
+
+# Sample CPUs at 49 Hertz, and show top addresses and symbols, live (no perf.data file):
+perf top -F 49
+
+# Sample CPUs at 49 Hertz, and show top process names and segments, live:
+perf top -F 49 -ns comm,dso
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="静态跟踪" class="headerLink"><a href="#%e9%9d%99%e6%80%81%e8%b7%9f%e8%b8%aa" class="header-mark"></a>静态跟踪</h4><p>Static Tracing</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Trace new processes, until Ctrl-C:
+perf record -e sched:sched_process_exec -a
+
+# Sample (take a subset of) context-switches, until Ctrl-C:
+perf record -e context-switches -a
+
+# Trace all context-switches, until Ctrl-C:
+perf record -e context-switches -c 1 -a
+
+# Include raw settings used (see: man perf_event_open):
+perf record -vv -e context-switches -a
+
+# Trace all context-switches via sched tracepoint, until Ctrl-C:
+perf record -e sched:sched_switch -a
+
+# Sample context-switches with stack traces, until Ctrl-C:
+perf record -e context-switches -ag
+
+# Sample context-switches with stack traces, for 10 seconds:
+perf record -e context-switches -ag -- sleep 10
+
+# Sample CS, stack traces, and with timestamps (&lt; Linux 3.17, -T now default):
+perf record -e context-switches -ag -T
+
+# Sample CPU migrations, for 10 seconds:
+perf record -e migrations -a -- sleep 10
+
+# Trace all connect()s with stack traces (outbound connections), until Ctrl-C:
+perf record -e syscalls:sys_enter_connect -ag
+
+# Trace all accepts()s with stack traces (inbound connections), until Ctrl-C:
+perf record -e syscalls:sys_enter_accept* -ag
+
+# Trace all block device (disk I/O) requests with stack traces, until Ctrl-C:
+perf record -e block:block_rq_insert -ag
+
+# Sample at most 100 block device requests per second, until Ctrl-C:
+perf record -F 100 -e block:block_rq_insert -a
+
+# Trace all block device issues and completions (has timestamps), until Ctrl-C:
+perf record -e block:block_rq_issue -e block:block_rq_complete -a
+
+# Trace all block completions, of size at least 100 Kbytes, until Ctrl-C:
+perf record -e block:block_rq_complete --filter &#39;nr_sector &gt; 200&#39;
+
+# Trace all block completions, synchronous writes only, until Ctrl-C:
+perf record -e block:block_rq_complete --filter &#39;rwbs == &#34;WS&#34;&#39;
+
+# Trace all block completions, all types of writes, until Ctrl-C:
+perf record -e block:block_rq_complete --filter &#39;rwbs ~ &#34;*W*&#34;&#39;
+
+# Sample minor faults (RSS growth) with stack traces, until Ctrl-C:
+perf record -e minor-faults -ag
+
+# Trace all minor faults with stack traces, until Ctrl-C:
+perf record -e minor-faults -c 1 -ag
+
+# Sample page faults with stack traces, until Ctrl-C:
+perf record -e page-faults -ag
+
+# Trace all ext4 calls, and write to a non-ext4 location, until Ctrl-C:
+perf record -e &#39;ext4:*&#39; -o /tmp/perf.data -a 
+
+# Trace kswapd wakeup events, until Ctrl-C:
+perf record -e vmscan:mm_vmscan_wakeup_kswapd -ag
+
+# Add Node.js USDT probes (Linux 4.10+):
+perf buildid-cache --add `which node`
+
+# Trace the node http__server__request USDT event (Linux 4.10+):
+perf record -e sdt_node:http__server__request -a
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="动态跟踪" class="headerLink"><a href="#%e5%8a%a8%e6%80%81%e8%b7%9f%e8%b8%aa" class="header-mark"></a>动态跟踪</h4><p>Dynamic Tracing</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Add a tracepoint for the kernel tcp_sendmsg() function entry (&#34;--add&#34; is optional):
+perf probe --add tcp_sendmsg
+
+# Remove the tcp_sendmsg() tracepoint (or use &#34;--del&#34;):
+perf probe -d tcp_sendmsg
+
+# Add a tracepoint for the kernel tcp_sendmsg() function return:
+perf probe &#39;tcp_sendmsg%return&#39;
+
+# Show available variables for the kernel tcp_sendmsg() function (needs debuginfo):
+perf probe -V tcp_sendmsg
+
+# Show available variables for the kernel tcp_sendmsg() function, plus external vars (needs debuginfo):
+perf probe -V tcp_sendmsg --externs
+
+# Show available line probes for tcp_sendmsg() (needs debuginfo):
+perf probe -L tcp_sendmsg
+
+# Show available variables for tcp_sendmsg() at line number 81 (needs debuginfo):
+perf probe -V tcp_sendmsg:81
+
+# Add a tracepoint for tcp_sendmsg(), with three entry argument registers (platform specific):
+perf probe &#39;tcp_sendmsg %ax %dx %cx&#39;
+
+# Add a tracepoint for tcp_sendmsg(), with an alias (&#34;bytes&#34;) for the %cx register (platform specific):
+perf probe &#39;tcp_sendmsg bytes=%cx&#39;
+
+# Trace previously created probe when the bytes (alias) variable is greater than 100:
+perf record -e probe:tcp_sendmsg --filter &#39;bytes &gt; 100&#39;
+
+# Add a tracepoint for tcp_sendmsg() return, and capture the return value:
+perf probe &#39;tcp_sendmsg%return $retval&#39;
+
+# Add a tracepoint for tcp_sendmsg(), and &#34;size&#34; entry argument (reliable, but needs debuginfo):
+perf probe &#39;tcp_sendmsg size&#39;
+
+# Add a tracepoint for tcp_sendmsg(), with size and socket state (needs debuginfo):
+perf probe &#39;tcp_sendmsg size sk-&gt;__sk_common.skc_state&#39;
+
+# Tell me how on Earth you would do this, but don&#39;t actually do it (needs debuginfo):
+perf probe -nv &#39;tcp_sendmsg size sk-&gt;__sk_common.skc_state&#39;
+
+# Trace previous probe when size is non-zero, and state is not TCP_ESTABLISHED(1) (needs debuginfo):
+perf record -e probe:tcp_sendmsg --filter &#39;size &gt; 0 &amp;&amp; skc_state != 1&#39; -a
+
+# Add a tracepoint for tcp_sendmsg() line 81 with local variable seglen (needs debuginfo):
+perf probe &#39;tcp_sendmsg:81 seglen&#39;
+
+# Add a tracepoint for do_sys_open() with the filename as a string (needs debuginfo):
+perf probe &#39;do_sys_open filename:string&#39;
+
+# Add a tracepoint for myfunc() return, and include the retval as a string:
+perf probe &#39;myfunc%return +0($retval):string&#39;
+
+# Add a tracepoint for the user-level malloc() function from libc:
+perf probe -x /lib64/libc.so.6 malloc
+
+# Add a tracepoint for this user-level static probe (USDT, aka SDT event):
+perf probe -x /usr/lib64/libpthread-2.24.so %sdt_libpthread:mutex_entry
+
+# List currently available dynamic probes:
+perf probe -l
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="混合跟踪" class="headerLink"><a href="#%e6%b7%b7%e5%90%88%e8%b7%9f%e8%b8%aa" class="header-mark"></a>混合跟踪</h4><p>Mixed</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Trace system calls by process, showing a summary refreshing every 2 seconds:
+perf top -e raw_syscalls:sys_enter -ns comm
+
+# Trace sent network packets by on-CPU process, rolling output (no clear):
+stdbuf -oL perf top -e net:net_dev_xmit -ns comm | strings
+
+# Sample stacks at 99 Hertz, and, context switches:
+perf record -F99 -e cpu-clock -e cs -a -g 
+
+# Sample stacks to 2 levels deep, and, context switch stacks to 5 levels (needs 4.8):
+perf record -F99 -e cpu-clock/max-stack=2/ -e cs/max-stack=5/ -a -g 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="缓存" class="headerLink"><a href="#%e7%bc%93%e5%ad%98" class="header-mark"></a>缓存</h4><p>Cacheline</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Record cacheline events (Linux 4.10+):
+perf c2c record -a -- sleep 10
+
+# Report cacheline events from previous recording (Linux 4.10+):
+perf c2c report
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="报告" class="headerLink"><a href="#%e6%8a%a5%e5%91%8a" class="header-mark"></a>报告</h4><p>Reporting</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Show perf.data in an ncurses browser (TUI) if possible:
+perf report
+
+# Show perf.data with a column for sample count:
+perf report -n
+
+# Show perf.data as a text report, with data coalesced and percentages:
+perf report --stdio
+
+# Report, with stacks in folded format: one line per stack (needs 4.4):
+perf report --stdio -n -g folded
+
+# List all events from perf.data:
+perf script
+
+# List all perf.data events, with data header (newer kernels; was previously default):
+perf script --header
+
+# List all perf.data events, with customized fields (&lt; Linux 4.1):
+perf script -f time,event,trace
+
+# List all perf.data events, with customized fields (&gt;= Linux 4.1):
+perf script -F time,event,trace
+
+# List all perf.data events, with my recommended fields (needs record -a; newer kernels):
+perf script --header -F comm,pid,tid,cpu,time,event,ip,sym,dso 
+
+# List all perf.data events, with my recommended fields (needs record -a; older kernels):
+perf script -f comm,pid,tid,cpu,time,event,ip,sym,dso
+
+# Dump raw contents from perf.data as hex (for debugging):
+perf script -D
+
+# Disassemble and annotate instructions with percentages (needs some debuginfo):
+perf annotate --stdio
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考" class="headerLink"><a href="#%e5%8f%82%e8%80%83" class="header-mark"></a>参考</h3><p><a href="https://www.brendangregg.com/perf.html">https://www.brendangregg.com/perf.html</a></p>
+</div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+
+
+
+
+<div class="block-author">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="/assets/image/sth.jpeg"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank"></a></div>
+        <div class="number-posts"></span></div>
+    </div>
+</div>
+
+
+<div class="post-tags"><a href="/tags/linux/" class="tag">Linux</a></div></div>
+                </footer></div>
+
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script><script>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym("70532758", "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor: null 
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70532758" style="position:absolute; left:-9999px;" alt="" /></div></noscript></body>
+</html>
