@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>数据结构与算法 - 滑动窗口 | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/featured-image.png"/>
+<meta name="twitter:title" content="数据结构与算法 - 滑动窗口"/>
+<meta name="twitter:description" content="数据结构与算法 - 滑动窗口。"/><meta name="Description" content="数据结构与算法 - 滑动窗口。"><meta property="og:title" content="数据结构与算法 - 滑动窗口" />
+<meta property="og:description" content="数据结构与算法 - 滑动窗口。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" /><meta property="og:image" content="https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-12T15:58:26&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-12T15:58:26&#43;08:00" />
+
+<meta name="application-name" content="WAIT | HOPE">
+<meta name="apple-mobile-web-app-title" content="WAIT | HOPE"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "数据结构与算法 - 滑动窗口",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/penn513.github.io\/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/penn513.github.io\/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3\/featured-image.png",
+                            "width":  890 ,
+                            "height":  557 
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  1896 ,
+        "url": "https:\/\/penn513.github.io\/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+        "publisher": {
+            "@type": "Person",
+            "name": "", "image": [
+            {
+            "@type": "ImageObject",
+            "url": "\/assets\/image\/sth.jpeg"
+            }
+            ]},"author": {
+                "@type": "Person",
+                "name": ""
+            },"description": "数据结构与算法 - 滑动窗口。"
+    }
+    </script><script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https:\/\/penn513.github.io"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Data Structures and Algorithms",
+            "item": "https://penn513.github.io/categories/data-structures-and-algorithms/"
+        },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "数据结构与算法 - 滑动窗口"
+            }]
+    }
+</script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="WAIT | HOPE" class="header-logo logo-svg"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/"> Tags </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/"> Categories </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/"> Docs </a>
+                        </li><li>
+                            <a class="menu-item" href="/about/"> About </a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i>  </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <span class="svg-icon icon-search"></span>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <span class="svg-icon icon-cancel"></span>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <span class="svg-icon icon-loading"></span>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="WAIT | HOPE" class="header-logo"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                        <div class="search mobile" id="search-mobile">
+                            <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                                <span class="svg-icon icon-search"></span>
+                            </a>
+                            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                                <span class="svg-icon icon-cancel"></span>
+                            </a>
+                            <span class="search-button search-loading" id="search-loading-mobile">
+                                <span class="svg-icon icon-loading"></span>
+                            </span>
+                        </div>
+                        <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                            Cancel
+                        </a>
+                    </div><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/" title="">Tags</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/" title="">Categories</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/" title="">Docs</a>
+                        </li><li>
+                            <a class="menu-item" href="/about/" title="">About</a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i></a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div></header><main class="main">
+<div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+    
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li><a href="/categories/data-structures-and-algorithms/">Data Structures and Algorithms </a></li><li>数据结构与算法 - 滑动窗口</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">数据结构与算法 - 滑动窗口</h1><div class="post-meta summary-post-meta"><span class="post-category meta-item">
+                                <a href="/categories/data-structures-and-algorithms/"><span class="svg-icon icon-folder"></span>Data Structures and Algorithms</a>
+                            </span><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>1896 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>4 minutes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="image-theme-classic">
+                        <img src="https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/featured-image.png" style="width: 100%">
+                    </div><div class="details toc" id="toc-static"  data-kept="">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#代码模板">代码模板</a></li>
+        <li><a href="#例题-1---尽可能使字符串相等">例题 1 - 尽可能使字符串相等</a></li>
+        <li><a href="#例题-2---滑动窗口最大值">例题 2 - 滑动窗口最大值</a></li>
+        <li><a href="#例题-3---串联所有单词的子串">例题 3 - 串联所有单词的子串</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                    </div><h3 id="简介" class="headerLink"><a href="#%e7%ae%80%e4%bb%8b" class="header-mark"></a>简介</h3><p>提到滑动窗口，最先想到的是TCP的流量控制，这里可以用来解决一些查找满足一定条件的连续区间的问题。</p>
+<p><strong>例子</strong>，给定数组为[2,3,1,2,4,3]，查找长度最小子数组，满足最小和s为7。当然可以枚举所有子数组求和，但会有很多重复计算，时间复杂度为O(N^2)，这里使用滑动窗口优化算法。</p>
+<p><strong>实现</strong>，给定一个滑动窗口，左右端分别为L和R，起始位置均为数组最左端。首先移动R，直至窗口区间满足给定条件，然后移动L，至区间不满足条件，再移动R。如此往复，并在过程中记录最优值。</p>
+<h3 id="代码模板" class="headerLink"><a href="#%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf" class="header-mark"></a>代码模板</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">def findSubArray(nums):
+    N = len(nums) # 数组/字符串长度
+    left, right = 0, 0 # 双指针，表示当前遍历的区间[left, right]，闭区间
+    sums = 0 # 用于统计 子数组/子区间 是否有效，根据题目可能会改成求和/计数
+    res = 0 # 保存最大的满足题目要求的 子数组/子串 长度
+    while right &lt; N: # 当右边的指针没有搜索到 数组/字符串 的结尾
+        sums += nums[right] # 增加当前右边指针的数字/字符的求和/计数
+        while 区间[left, right]不符合题意：# 此时需要一直移动左指针，直至找到一个符合题意的区间
+            sums -= nums[left] # 移动左指针前需要从counter中减少left位置字符的求和/计数
+            left += 1 # 真正的移动左指针，注意不能跟上面一行代码写反
+        # 到 while 结束时，我们找到了一个符合题意要求的 子数组/子串
+        res = max(res, right - left + 1) # 需要更新结果
+        right += 1 # 移动右指针，去探索新的区间
+    return res
+
+作者：fuxuemingzhu
+链接：https://leetcode-cn.com/problems/get-equal-substrings-within-budget/solution/fen-xiang-zhen-cang-de-hua-dong-chuang-k-e3rd/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-1---尽可能使字符串相等" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-1---%e5%b0%bd%e5%8f%af%e8%83%bd%e4%bd%bf%e5%ad%97%e7%ac%a6%e4%b8%b2%e7%9b%b8%e7%ad%89" class="header-mark"></a>例题 1 - 尽可能使字符串相等</h3><p><a href="https://leetcode-cn.com/problems/get-equal-substrings-within-budget/">https://leetcode-cn.com/problems/get-equal-substrings-within-budget/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89.png" title="尽可能使字符串相等" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89.png"
+            alt="尽可能使字符串相等"
+        />
+    </a><figcaption class="image-caption">尽可能使字符串相等</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def equalSubstring(self, s: str, t: str, maxCost: int) -&gt; int:
+        N = len(s)
+        if N == 0:
+            return 0
+        costs = [abs(ord(s[i]) - ord(t[i])) for i in range(N)]
+        left, right = 0, 0
+        cost = 0
+        max_len = 0
+
+        while right &lt; N:
+            cost += costs[right]
+            while cost &gt; maxCost:
+                cost -= costs[left]
+                left += 1
+            max_len = max(max_len, right - left + 1)
+            right += 1
+
+        return max_len
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-2---滑动窗口最大值" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-2---%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3%e6%9c%80%e5%a4%a7%e5%80%bc" class="header-mark"></a>例题 2 - 滑动窗口最大值</h3><p><a href="https://leetcode-cn.com/problems/sliding-window-maximum/">https://leetcode-cn.com/problems/sliding-window-maximum/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.png" title="滑动窗口最大值" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.png"
+            alt="滑动窗口最大值"
+        />
+    </a><figcaption class="image-caption">滑动窗口最大值</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -&gt; List[int]:
+        &#39;&#39;&#39;
+        思路:
+            1. 利用双端队列记录当前滑动窗口的元素索引
+            2. 队列最左侧元素记录滑动窗口中最大元素的索引
+            3. 遍历数组：
+            - 如果队列最左侧索引已不在滑动窗口范围内，弹出队列最左侧索引
+            - 通过循环确保队列的最左侧索引所对应元素值最大
+            - 新元素入队
+            - 从第一个滑动窗口的末尾索引开始将最大值存储到结果res中
+        &#39;&#39;&#39;
+        res = []
+        dq = deque()
+        for i, v in enumerate(nums):
+            if dq and dq[0] &lt; i - k + 1:
+                dq.popleft()
+            while dq and nums[dq[-1]] &lt; v:
+                dq.pop()
+            dq.append(i)
+            if i &gt;= k - 1:
+                res.append(nums[dq[0]])
+        return res
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-3---串联所有单词的子串" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-3---%e4%b8%b2%e8%81%94%e6%89%80%e6%9c%89%e5%8d%95%e8%af%8d%e7%9a%84%e5%ad%90%e4%b8%b2" class="header-mark"></a>例题 3 - 串联所有单词的子串</h3><p><a href="https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/">https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%B2%E8%81%94%E6%89%80%E6%9C%89%E5%8D%95%E8%AF%8D%E7%9A%84%E5%AD%90%E4%B8%B2.png" title="串联所有单词的子串" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%B2%E8%81%94%E6%89%80%E6%9C%89%E5%8D%95%E8%AF%8D%E7%9A%84%E5%AD%90%E4%B8%B2.png"
+            alt="串联所有单词的子串"
+        />
+    </a><figcaption class="image-caption">串联所有单词的子串</figcaption>
+    </figure></p>
+<p>这题最秀的地方不是滑动窗口，是如何判断子串是否满足条件。可以用两个 HashMap 来解决。</p>
+<p>首先，我们把所有的单词存到 HashMap 里，key 直接存单词，value 存单词出现的个数（因为给出的单词可能会有重复的，所以可能是 1 或 2 或者其他）。然后扫描子串的单词，如果当前扫描的单词在之前的 HashMap 中，就把该单词存到新的 HashMap 中，并判断新的 HashMap 中该单词的 value 是不是大于之前的 HashMap 该单词的 value ，如果大了，就代表该子串不是我们要找的，接着判断下一个子串就可以了。如果不大于，那么我们接着判断下一个单词的情况。子串扫描结束，如果子串的全部单词都符合，那么该子串就是我们找的其中一个。</p>
+<p>参考： <a href="https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-6/">https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-6/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def findSubstring(self, s: str, words: List[str]) -&gt; List[int]:
+        if not s or not words:
+            return []
+        n = len(s)
+        one_word_len = len(words[0])
+        word_cnt = len(words)
+        all_len = one_word_len * word_cnt
+
+        words_cnt = defaultdict(int)           # 给定words的词数表
+        for w in words:
+            words_cnt[w] += 1
+
+        res = [] 
+        for i in range(one_word_len):          # 外层对一个单词长度循环，这里需要思考下，
+                                               # 窗口给按单词长度滑动，这样可以覆盖所有情况
+            cur_w_num = 0                      # 单词个数
+            L, R = i, i
+            cur_w_dic = defaultdict(int)       # 当前单词的次数统计
+            while R + one_word_len &lt;= len(s):
+                w = s[R: R + one_word_len]
+                R += one_word_len              # R每次像右移一个单词的长度
+
+                if w not in words_cnt:         # 结束前，出现个不知道哪里的单词，整个前面一片就废了
+                    L = R
+                    cur_w_dic.clear()
+                    cur_w_num = 0
+                else:
+                    cur_w_dic[w] += 1
+                    cur_w_num += 1
+                    while cur_w_dic[w] &gt; words_cnt[w]:      # 单词超量，移动L，更新计数
+                        L_w = s[L : L + one_word_len]
+                        L += one_word_len
+                        cur_w_dic[L_w] -= 1
+                        cur_w_num -= 1
+                    if cur_w_num == word_cnt:               # 满足条件，结果赋值
+                        res.append(L)
+        
+        return res
+</code></pre></td></tr></table>
+</div>
+</div></div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+
+
+
+
+<div class="block-author">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="/assets/image/sth.jpeg"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank"></a></div>
+        <div class="number-posts"></span></div>
+    </div>
+</div>
+
+
+<div class="post-tags"><a href="/tags/data-structures-and-algorithms/" class="tag">Data Structures and Algorithms</a></div></div>
+                </footer></div>
+
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script><script>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym("70532758", "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor: null 
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70532758" style="position:absolute; left:-9999px;" alt="" /></div></noscript></body>
+</html>

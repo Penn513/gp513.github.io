@@ -9,7 +9,7 @@
     <pubDate>Thu, 15 Jul 2021 15:58:26 &#43;0800</pubDate>
     <author>GP</author>
     <guid>https://penn513.github.io/%E5%B9%B6%E6%9F%A5%E9%9B%86/</guid>
-    <description><![CDATA[上概念 并查集： Disjoint-Set，是用于处理一些不交集的合并及查询问题的一种数据结构，支持查询、合并以及添加操作。 合并： Union，简]]></description>
+    <description><![CDATA[概念 并查集： Disjoint-Set，是用于处理一些不交集的合并及查询问题的一种数据结构，支持查询、合并以及添加操作。 合并： Union，简单]]></description>
 </item><item>
     <title>数据结构与算法 - 单调栈</title>
     <link>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</link>
@@ -17,5 +17,12 @@
     <author>GP</author>
     <guid>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</guid>
     <description><![CDATA[性质 单调递减栈，能表示入栈元素左边第一个比它大的元素。入栈表明本身比栈顶小，出栈表面本身比栈顶大； 单调递增栈，能表示入栈元素左边第一个比它小]]></description>
+</item><item>
+    <title>数据结构与算法 - 滑动窗口</title>
+    <link>https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
+    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
+    <description><![CDATA[简介提到滑动窗口，最先想到的是TCP的流量控制，这里可以用来解决一些查找满足一定条件的连续区间的问题。 例子，给定数组为[2,3,1,2,4,]]></description>
 </item></channel>
 </rss>
