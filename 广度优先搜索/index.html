@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>数据结构与算法 - 广度优先搜索 | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/featured-image.jpeg"/>
+<meta name="twitter:title" content="数据结构与算法 - 广度优先搜索"/>
+<meta name="twitter:description" content="数据结构与算法 - 广度优先搜索。"/><meta name="Description" content="数据结构与算法 - 广度优先搜索。"><meta property="og:title" content="数据结构与算法 - 广度优先搜索" />
+<meta property="og:description" content="数据结构与算法 - 广度优先搜索。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" /><meta property="og:image" content="https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/featured-image.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-12T15:58:26&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-12T15:58:26&#43;08:00" />
+
+<meta name="application-name" content="WAIT | HOPE">
+<meta name="apple-mobile-web-app-title" content="WAIT | HOPE"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "数据结构与算法 - 广度优先搜索",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/penn513.github.io\/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/penn513.github.io\/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2\/featured-image.jpeg",
+                            "width":  875 ,
+                            "height":  583 
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  1122 ,
+        "url": "https:\/\/penn513.github.io\/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+        "publisher": {
+            "@type": "Person",
+            "name": "", "image": [
+            {
+            "@type": "ImageObject",
+            "url": "\/assets\/image\/sth.jpeg"
+            }
+            ]},"author": {
+                "@type": "Person",
+                "name": ""
+            },"description": "数据结构与算法 - 广度优先搜索。"
+    }
+    </script><script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https:\/\/penn513.github.io"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Data Structures and Algorithms",
+            "item": "https://penn513.github.io/categories/data-structures-and-algorithms/"
+        },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "数据结构与算法 - 广度优先搜索"
+            }]
+    }
+</script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="WAIT | HOPE" class="header-logo logo-svg"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/"> Tags </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/"> Categories </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/"> Docs </a>
+                        </li><li>
+                            <a class="menu-item" href="/about/"> About </a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i>  </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <span class="svg-icon icon-search"></span>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <span class="svg-icon icon-cancel"></span>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <span class="svg-icon icon-loading"></span>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="WAIT | HOPE" class="header-logo"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                        <div class="search mobile" id="search-mobile">
+                            <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                                <span class="svg-icon icon-search"></span>
+                            </a>
+                            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                                <span class="svg-icon icon-cancel"></span>
+                            </a>
+                            <span class="search-button search-loading" id="search-loading-mobile">
+                                <span class="svg-icon icon-loading"></span>
+                            </span>
+                        </div>
+                        <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                            Cancel
+                        </a>
+                    </div><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/" title="">Tags</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/" title="">Categories</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/" title="">Docs</a>
+                        </li><li>
+                            <a class="menu-item" href="/about/" title="">About</a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i></a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div></header><main class="main">
+<div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+    
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li><a href="/categories/data-structures-and-algorithms/">Data Structures and Algorithms </a></li><li>数据结构与算法 - 广度优先搜索</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">数据结构与算法 - 广度优先搜索</h1><div class="post-meta summary-post-meta"><span class="post-category meta-item">
+                                <a href="/categories/data-structures-and-algorithms/"><span class="svg-icon icon-folder"></span>Data Structures and Algorithms</a>
+                            </span><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>1122 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>3 minutes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="image-theme-classic">
+                        <img src="https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/featured-image.jpeg" style="width: 100%">
+                    </div><div class="details toc" id="toc-static"  data-kept="">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#模板">模板</a></li>
+        <li><a href="#例题-1---单词接龙">例题 1 - 单词接龙</a></li>
+        <li><a href="#例题-2---公交路线">例题 2 - 公交路线</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                    </div><h3 id="简介" class="headerLink"><a href="#%e7%ae%80%e4%bb%8b" class="header-mark"></a>简介</h3><p>常用来解决最短路径问题。</p>
+<h3 id="模板" class="headerLink"><a href="#%e6%a8%a1%e6%9d%bf" class="header-mark"></a>模板</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">from collections import deque
+def search(name): # 广度优先搜索(BFS)
+    search_quene = deque()
+    search_quene += graph[name] # 传入初始节点
+    searched = [] # 避免重复处理
+
+    while search_quene:
+    #队列中，pop()默认抛出右边元素，但是我们希望，append()从右边入队，popleft()从左边出队
+        person = search_quene.popleft()
+        if person not in searched:
+        # bingo()判断当前是不是我们要找的人
+            if bingo(person):
+                return True
+            else:
+                search_quene += graph[person]
+                searched.append(person)
+    return False
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-1---单词接龙" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-1---%e5%8d%95%e8%af%8d%e6%8e%a5%e9%be%99" class="header-mark"></a>例题 1 - 单词接龙</h3><p><a href="https://leetcode-cn.com/problems/word-ladder/">https://leetcode-cn.com/problems/word-ladder/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99.png" title="单词接龙" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99.png"
+            alt="单词接龙"
+        />
+    </a><figcaption class="image-caption">单词接龙</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -&gt; int:
+        st=set(wordList) # 时间复杂都O(1)查找
+        if endWord not in st:
+            return 0
+        m=len(beginWord)        
+
+        queue=collections.deque()        
+        queue.append((beginWord,1)) # 1表示step，即距离
+
+        visited=set()
+        visited.add(beginWord)
+
+        while queue:
+            cur,step=queue.popleft()
+            if cur==endWord:
+                return step
+            
+            for i in range(m): # 对当前单词中每个字母用26个字母替换，若新单词在wordList中且未访问过，入队列                
+                for j in range(26):
+                    tmp=cur[:i]+chr(97+j)+cur[i+1:]
+                    if tmp not in visited and tmp in st:
+                        queue.append((tmp,step+1))
+                        visited.add(tmp)
+
+        return 0
+
+作者：yim-6
+链接：https://leetcode-cn.com/problems/word-ladder/solution/python3-bfshe-shuang-xiang-bfsshi-xian-dan-ci-jie-/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 从beginWord和endWord分别做bfs，若从一端查到的节点已经在另一端的visited中，则说明可以相连且该节点为连接点
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -&gt; int:
+        st=set(wordList)
+        if endWord not in st:
+            return 0
+        m=len(beginWord)
+        lvisited=set()
+        rvisited=set()
+        lqueue=collections.deque()
+        rqueue=collections.deque()
+        
+        lqueue.append(beginWord)
+        rqueue.append(endWord)
+
+        lvisited.add(beginWord)
+        rvisited.add(endWord)
+        step=0
+
+        while lqueue and rqueue:
+            if len(lqueue)&gt;len(rqueue):
+                lqueue,rqueue=rqueue,lqueue
+                lvisited,rvisited=rvisited,lvisited
+            step+=1
+            for k in range(len(lqueue)):
+                cur=lqueue.popleft()
+                if cur in rvisited:
+                    return step
+                
+                for i in range(m):                
+                    for j in range(26):
+                        tmp=cur[:i]+chr(97+j)+cur[i+1:]
+                        if tmp not in lvisited and tmp in st:
+                            lqueue.append(tmp)
+                            lvisited.add(tmp)
+                       
+        return 0
+
+
+
+作者：yim-6
+链接：https://leetcode-cn.com/problems/word-ladder/solution/python3-bfshe-shuang-xiang-bfsshi-xian-dan-ci-jie-/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-2---公交路线" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-2---%e5%85%ac%e4%ba%a4%e8%b7%af%e7%ba%bf" class="header-mark"></a>例题 2 - 公交路线</h3><p><a href="https://leetcode-cn.com/problems/bus-routes/">https://leetcode-cn.com/problems/bus-routes/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E5%85%AC%E4%BA%A4%E8%B7%AF%E7%BA%BF.png" title="公交路线" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E5%85%AC%E4%BA%A4%E8%B7%AF%E7%BA%BF.png"
+            alt="公交路线"
+        />
+    </a><figcaption class="image-caption">公交路线</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -&gt; int:
+        # 每个车站可以乘坐的公交车
+        stations = defaultdict(set)
+        for i, stops in enumerate(routes):
+            for stop in stops:
+                stations[stop].add(i)
+        # 每个公交车线路可以到达的车站
+        routes = [set(x) for x in routes]
+
+        q = deque([(source, 0)])
+        # 已经乘坐了的公交车
+        buses = set()
+        # 已经到达了的车站
+        stops = {source}
+        while q:
+            pos, cost = q.popleft()
+            if pos == target:
+                return cost
+            # 当前车站中尚未乘坐的公交车
+            for bus in stations[pos] - buses:
+                # 该公交车尚未到达过的车站
+                for stop in routes[bus] - stops:
+                    buses.add(bus)
+                    stops.add(stop)
+                    q.append((stop, cost + 1))
+        return -1
+</code></pre></td></tr></table>
+</div>
+</div></div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+
+
+
+
+<div class="block-author">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="/assets/image/sth.jpeg"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank"></a></div>
+        <div class="number-posts"></span></div>
+    </div>
+</div>
+
+
+<div class="post-tags"><a href="/tags/data-structures-and-algorithms/" class="tag">Data Structures and Algorithms</a></div></div>
+                </footer></div>
+
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script><script>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym("70532758", "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor: null 
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70532758" style="position:absolute; left:-9999px;" alt="" /></div></noscript></body>
+</html>

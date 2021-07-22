@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>数据结构与算法 - 前缀和 | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/featured-image.png"/>
+<meta name="twitter:title" content="数据结构与算法 - 前缀和"/>
+<meta name="twitter:description" content="数据结构与算法 - 前缀和。"/><meta name="Description" content="数据结构与算法 - 前缀和。"><meta property="og:title" content="数据结构与算法 - 前缀和" />
+<meta property="og:description" content="数据结构与算法 - 前缀和。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/" /><meta property="og:image" content="https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-12T15:58:26&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-12T15:58:26&#43;08:00" />
+
+<meta name="application-name" content="WAIT | HOPE">
+<meta name="apple-mobile-web-app-title" content="WAIT | HOPE"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "数据结构与算法 - 前缀和",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/penn513.github.io\/%E5%89%8D%E7%BC%80%E5%92%8C\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/penn513.github.io\/%E5%89%8D%E7%BC%80%E5%92%8C\/featured-image.png",
+                            "width":  1080 ,
+                            "height":  308 
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  438 ,
+        "url": "https:\/\/penn513.github.io\/%E5%89%8D%E7%BC%80%E5%92%8C\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+        "publisher": {
+            "@type": "Person",
+            "name": "", "image": [
+            {
+            "@type": "ImageObject",
+            "url": "\/assets\/image\/sth.jpeg"
+            }
+            ]},"author": {
+                "@type": "Person",
+                "name": ""
+            },"description": "数据结构与算法 - 前缀和。"
+    }
+    </script><script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https:\/\/penn513.github.io"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Data Structures and Algorithms",
+            "item": "https://penn513.github.io/categories/data-structures-and-algorithms/"
+        },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "数据结构与算法 - 前缀和"
+            }]
+    }
+</script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="WAIT | HOPE" class="header-logo logo-svg"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/"> Tags </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/"> Categories </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/"> Docs </a>
+                        </li><li>
+                            <a class="menu-item" href="/about/"> About </a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i>  </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <span class="svg-icon icon-search"></span>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <span class="svg-icon icon-cancel"></span>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <span class="svg-icon icon-loading"></span>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="WAIT | HOPE" class="header-logo"><span class="header-title-pre"><i class='fas fa-pencil-alt fa-fw'></i></span>WAIT | HOPE</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                        <div class="search mobile" id="search-mobile">
+                            <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                                <span class="svg-icon icon-search"></span>
+                            </a>
+                            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                                <span class="svg-icon icon-cancel"></span>
+                            </a>
+                            <span class="search-button search-loading" id="search-loading-mobile">
+                                <span class="svg-icon icon-loading"></span>
+                            </span>
+                        </div>
+                        <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                            Cancel
+                        </a>
+                    </div><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/" title="">Tags</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/" title="">Categories</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/documentation/" title="">Docs</a>
+                        </li><li>
+                            <a class="menu-item" href="/about/" title="">About</a>
+                        </li><li>
+                            <a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i></a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div></header><main class="main">
+<div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+    
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li><a href="/categories/data-structures-and-algorithms/">Data Structures and Algorithms </a></li><li>数据结构与算法 - 前缀和</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">数据结构与算法 - 前缀和</h1><div class="post-meta summary-post-meta"><span class="post-category meta-item">
+                                <a href="/categories/data-structures-and-algorithms/"><span class="svg-icon icon-folder"></span>Data Structures and Algorithms</a>
+                            </span><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>438 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>One minute
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="image-theme-classic">
+                        <img src="https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/featured-image.png" style="width: 100%">
+                    </div><div class="details toc" id="toc-static"  data-kept="">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#例题-1---和为k的子数组">例题 1 - 和为K的子数组</a></li>
+        <li><a href="#例题2---连续的子数组和">例题2 - 连续的子数组和</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                    </div><h3 id="简介" class="headerLink"><a href="#%e7%ae%80%e4%bb%8b" class="header-mark"></a>简介</h3><p>前缀和主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。</p>
+<h3 id="例题-1---和为k的子数组" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-1---%e5%92%8c%e4%b8%bak%e7%9a%84%e5%ad%90%e6%95%b0%e7%bb%84" class="header-mark"></a>例题 1 - 和为K的子数组</h3><p><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/">https://leetcode-cn.com/problems/subarray-sum-equals-k/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%89%8D%E7%BC%80%E5%92%8C/%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.png" title="和为K的子数组" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%89%8D%E7%BC%80%E5%92%8C/%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.png"
+            alt="和为K的子数组"
+        />
+    </a><figcaption class="image-caption">和为K的子数组</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def subarraySum(self, nums: List[int], k: int) -&gt; int:
+        num_times = collections.defaultdict(int) # 某前缀和出现的次数
+        num_times[0] = 1  # 先给定一个初值处理nums[0] = k的情况
+        cur_sum = 0
+        res = 0
+        for i in range(len(nums)):
+            cur_sum += nums[i]  # 计算当前前缀和
+            if cur_sum - k in num_times: # 若该前缀和出现过，则res加上出现的次数
+                res += num_times[cur_sum - k]
+            num_times[cur_sum] += 1
+        return res
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题2---连续的子数组和" class="headerLink"><a href="#%e4%be%8b%e9%a2%982---%e8%bf%9e%e7%bb%ad%e7%9a%84%e5%ad%90%e6%95%b0%e7%bb%84%e5%92%8c" class="header-mark"></a>例题2 - 连续的子数组和</h3><p><a href="https://leetcode-cn.com/problems/continuous-subarray-sum/">https://leetcode-cn.com/problems/continuous-subarray-sum/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%89%8D%E7%BC%80%E5%92%8C/%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C.png" title="连续的子数组和" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%89%8D%E7%BC%80%E5%92%8C/%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C.png"
+            alt="连续的子数组和"
+        />
+    </a><figcaption class="image-caption">连续的子数组和</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -&gt; bool:
+        index_dict = dict() # 字典中存放余数第一次出现的索引，这里使用到同余定理，
+                            # 即a、b除k的余数相同时a - b能被k整除
+        cur_sum = 0
+        pre_sum = []
+        res = False
+        index_dict[0] = -1  # 处理余数为0的情况
+        for i in range(len(nums)):
+            cur_sum += nums[i]
+            remainder = cur_sum % k
+            if remainder not in index_dict:
+                index_dict[remainder] = i
+                continue
+            if i - index_dict[remainder] &gt; 1:
+                res = True
+        return res
+</code></pre></td></tr></table>
+</div>
+</div></div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+
+
+
+
+<div class="block-author">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="/assets/image/sth.jpeg"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank"></a></div>
+        <div class="number-posts"></span></div>
+    </div>
+</div>
+
+
+<div class="post-tags"><a href="/tags/data-structures-and-algorithms/" class="tag">Data Structures and Algorithms</a></div></div>
+                </footer></div>
+
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script><script>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym("70532758", "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor: null 
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70532758" style="position:absolute; left:-9999px;" alt="" /></div></noscript></body>
+</html>
