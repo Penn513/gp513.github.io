@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Git - Tag - WAIT | HOPE</title>
+        <link>https://penn513.github.io/tags/git/</link>
+        <description>Git - Tag - WAIT | HOPE</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://penn513.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Git使用</title>
+    <link>https://penn513.github.io/git%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/git%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[1. 子仓同步主仓 新增主仓代码库 git remote add upstream 'xxx.git' 拉取主仓代码至本地master分支 git pull upstream master 提交本地代码至远程子仓 git push]]></description>
+</item></channel>
+</rss>

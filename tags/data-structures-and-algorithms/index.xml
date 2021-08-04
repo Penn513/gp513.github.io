@@ -16,7 +16,7 @@
     <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
     <author>GP</author>
     <guid>https://penn513.github.io/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</guid>
-    <description><![CDATA[例题 1 - 寻找两个正序数组的中位数https://leetcode-cn.com/problems/median-of-two-sorted-]]></description>
+    <description><![CDATA[模板 1 - 二分查找1 2 3 4 5 6 7 8 9 10 11 12 13 14 def binary_search(nums, target): if len(nums) &lt;= 0: return -1 left, right = 0, len(nums) - 1 # 查找区间[left, right] while left &lt;= right: mid = left + (right - left) // 2 if nums[mid] == target: return mid elif]]></description>
 </item><item>
     <title>数据结构与算法 - 前缀和</title>
     <link>https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/</link>

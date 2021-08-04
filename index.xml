@@ -20,12 +20,19 @@
     <guid>https://penn513.github.io/perf%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</guid>
     <description><![CDATA[perf也被称为perf_events，是一个面向event的观察工具，可用于性能剖析或内核故障排查。perf是内核的一部分，随内核发布。 事]]></description>
 </item><item>
+    <title>Git使用</title>
+    <link>https://penn513.github.io/git%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/git%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[1. 子仓同步主仓 新增主仓代码库 git remote add upstream 'xxx.git' 拉取主仓代码至本地master分支 git pull upstream master 提交本地代码至远程子仓 git push]]></description>
+</item><item>
     <title>数据结构与算法 - 二分查找</title>
     <link>https://penn513.github.io/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
     <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
     <author>GP</author>
     <guid>https://penn513.github.io/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</guid>
-    <description><![CDATA[例题 1 - 寻找两个正序数组的中位数https://leetcode-cn.com/problems/median-of-two-sorted-]]></description>
+    <description><![CDATA[模板 1 - 二分查找1 2 3 4 5 6 7 8 9 10 11 12 13 14 def binary_search(nums, target): if len(nums) &lt;= 0: return -1 left, right = 0, len(nums) - 1 # 查找区间[left, right] while left &lt;= right: mid = left + (right - left) // 2 if nums[mid] == target: return mid elif]]></description>
 </item><item>
     <title>数据结构与算法 - 前缀和</title>
     <link>https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/</link>
@@ -68,12 +75,5 @@
     <author>GP</author>
     <guid>https://penn513.github.io/%E5%B7%AE%E5%88%86/</guid>
     <description><![CDATA[简介如果需要快速让数组中某个区间加上一个数，就需要用到差分。 例题 1 - 拼车https://leetcode-cn.com/problems/s]]></description>
-</item><item>
-    <title>数据结构与算法 - 广度优先搜索</title>
-    <link>https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</link>
-    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</guid>
-    <description><![CDATA[简介常用来解决最短路径问题。 模板1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 from collections import deque def search(name): # 广度优先搜索(BFS) search_quene = deque() search_quene += graph[name] # 传入初始节点 searched = [] # 避免]]></description>
 </item></channel>
 </rss>

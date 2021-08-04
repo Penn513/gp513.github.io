@@ -31,7 +31,7 @@
                             "url": "https:\/\/penn513.github.io\/%E5%AD%97%E5%85%B8%E6%A0%91\/featured-image.png",
                             "width":  375 ,
                             "height":  352 
-                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  453 ,
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  699 ,
         "url": "https:\/\/penn513.github.io\/%E5%AD%97%E5%85%B8%E6%A0%91\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
         "publisher": {
             "@type": "Person",
@@ -187,10 +187,10 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>453 words
+                                <span class="svg-icon icon-pencil"></span>699 words
                             </span>
                             <span class="post-meta-reading meta-item">
-                                <span class="svg-icon icon-stopwatch"></span>One minute
+                                <span class="svg-icon icon-stopwatch"></span>2 minutes
                             </span>
                         </div>
 
@@ -216,6 +216,7 @@
       <ul>
         <li><a href="#简介">简介</a></li>
         <li><a href="#模板">模板</a></li>
+        <li><a href="#例题-1---单词的压缩编码后缀树">例题 1 - 单词的压缩编码（后缀树）</a></li>
       </ul>
     </li>
   </ul>
@@ -298,6 +299,111 @@ class Trie:
                 return False
             node = node.children[ch]
         return node.preCount &gt; 0
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="例题-1---单词的压缩编码后缀树" class="headerLink"><a href="#%e4%be%8b%e9%a2%98-1---%e5%8d%95%e8%af%8d%e7%9a%84%e5%8e%8b%e7%bc%a9%e7%bc%96%e7%a0%81%e5%90%8e%e7%bc%80%e6%a0%91" class="header-mark"></a>例题 1 - 单词的压缩编码（后缀树）</h3><p><a href="https://leetcode-cn.com/problems/short-encoding-of-words/">https://leetcode-cn.com/problems/short-encoding-of-words/</a>
+
+
+
+
+    
+    
+<figure class="render-image"><a target="_blank" href="/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81.png" title="单词的压缩编码" >
+        <img loading="lazy" decoding="async"
+             class="render-image"
+             src="/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81.png"
+            alt="单词的压缩编码"
+        />
+    </a><figcaption class="image-caption">单词的压缩编码</figcaption>
+    </figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Trie: # 构造字典树
+    def __init__(self):
+        &#34;&#34;&#34;
+        Initialize your data structure here.
+        &#34;&#34;&#34;
+        self.Trie = {}
+
+    def insert(self, word):
+        &#34;&#34;&#34;
+        Inserts a word into the trie.
+        :type word: str
+        :rtype: void
+        &#34;&#34;&#34;
+        curr = self.Trie
+        for w in word:
+            if w not in curr:
+                curr[w] = {}
+            curr = curr[w]
+        curr[&#39;#&#39;] = 1
+
+    def isTail(self, word):
+        &#34;&#34;&#34;
+        Returns if the word is in the trie.
+        :type word: str
+        :rtype: bool
+        &#34;&#34;&#34;
+        curr = self.Trie
+        for w in word:
+            curr = curr[w]
+        return len(curr) == 1 
+class Solution:
+    def minimumLengthEncoding(self, words: List[str]) -&gt; int:
+        trie = Trie()
+        cnt = 0
+        words = set(words)
+        for word in words:
+            trie.insert(word[::-1])
+        for word in words:
+            if trie.isTail(word[::-1]):
+                cnt += len(word) + 1
+        return cnt
 
 </code></pre></td></tr></table>
 </div>

@@ -1,6 +1,52 @@
 # 数据结构与算法 - 二分查找
 
 
+### 模板 1 - 二分查找
+```
+def binary_search(nums, target):
+    if len(nums) <= 0:
+        return -1
+    
+    left, right = 0, len(nums) - 1 # 查找区间[left, right]
+    while left <= right:
+        mid = left + (right - left) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+### 模板 2 - 查找左边界
+```
+def binary_search_left_bound(nums, target):
+    if len(nums) <= 0:
+        return -1
+    
+    left, right = 0, len(nums) # 查找空间[left, right)
+    while left < right:
+        mid = left + (right - left) // 2
+        if nums[mid] >= target:
+            right = mid
+        else:
+            left = mid + 1
+
+    if left < len(nums) and nums[left] = target:
+        return left
+    return -1
+```
+
+### 模板 3 - 查找右边界
+```
+def binary_search_right_bound(nums, target):
+    if len(nums) <= 0:
+        return -1
+
+    
+```
+
 ### 例题 1 - 寻找两个正序数组的中位数
 <https://leetcode-cn.com/problems/median-of-two-sorted-arrays/>
 ![寻找两个正序数组的中位数](寻找两个正序数组的中位数.png "寻找两个正序数组的中位数")
