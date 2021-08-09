@@ -28,10 +28,12 @@ def binary_search_left_bound(nums, target):
     left, right = 0, len(nums) # 查找空间[left, right)
     while left < right:
         mid = left + (right - left) // 2
-        if nums[mid] >= target:
+        if nums[mid] = target:
             right = mid
-        else:
+        elif nums[mid] < target:
             left = mid + 1
+        else:
+            right = mid
 
     if left < len(nums) and nums[left] = target:
         return left
@@ -44,7 +46,20 @@ def binary_search_right_bound(nums, target):
     if len(nums) <= 0:
         return -1
 
-    
+    left , right = 0, len(nums) # 查找空间[left, right)
+    while left < right:
+        mid = left + (right - left) // 2
+        if nums[mid] == target:
+            left = mid + 1
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid
+
+    if left == 0 or not nums[left - 1] == target:
+        return -1
+    return left - 1 
+
 ```
 
 ### 例题 1 - 寻找两个正序数组的中位数

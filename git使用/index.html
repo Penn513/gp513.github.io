@@ -31,7 +31,7 @@
                             "url": "https:\/\/penn513.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "Git","wordCount":  53 ,
+                        }],"genre": "posts","keywords": "Git","wordCount":  100 ,
         "url": "https:\/\/penn513.github.io\/git%E4%BD%BF%E7%94%A8\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
         "publisher": {
             "@type": "Person",
@@ -187,7 +187,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>53 words
+                                <span class="svg-icon icon-pencil"></span>100 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>One minute
@@ -213,6 +213,7 @@
     <li>
       <ul>
         <li><a href="#1-子仓同步主仓">1. 子仓同步主仓</a></li>
+        <li><a href="#2-强制push覆盖远程仓库">2. 强制push，覆盖远程仓库</a></li>
       </ul>
     </li>
   </ul>
@@ -229,6 +230,16 @@
 <li>
 <p>提交本地代码至远程子仓
 <code>git push</code></p>
+</li>
+</ol>
+<h3 id="2-强制push覆盖远程仓库" class="headerLink"><a href="#2-%e5%bc%ba%e5%88%b6push%e8%a6%86%e7%9b%96%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93" class="header-mark"></a>2. 强制push，覆盖远程仓库</h3><ol>
+<li>
+<p>回退本地代码至前一次提交
+<code>git reset --soft HEAD~1</code></p>
+</li>
+<li>
+<p>强制push，覆盖远程
+<code>git push -u origin master -f</code></p>
 </li>
 </ol>
 </div><footer>
