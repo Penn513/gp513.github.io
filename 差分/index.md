@@ -5,7 +5,7 @@
 如果需要快速让数组中某个区间加上一个数，就需要用到差分。
 
 ### 例题 1 - 拼车
-<https://leetcode-cn.com/problems/subarray-sum-equals-k/>
+<https://leetcode-cn.com/problems/car-pooling/>
 ![拼车](拼车.png "拼车")
 ```
 class Solution:

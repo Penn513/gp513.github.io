@@ -31,7 +31,7 @@
                             "url": "https:\/\/penn513.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  1732 ,
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  1911 ,
         "url": "https:\/\/penn513.github.io\/%E5%AD%97%E7%AC%A6%E4%B8%B2\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
         "publisher": {
             "@type": "Person",
@@ -187,7 +187,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>1732 words
+                                <span class="svg-icon icon-pencil"></span>1911 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>4 minutes
@@ -236,6 +236,62 @@
     </a><figcaption class="image-caption">最长回文子串</figcaption>
     </figure></p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 双指针模板
+String palindrome(String s, int l, int r) {
+    // 防止索引越界
+    while (l &gt;= 0 &amp;&amp; r &lt; s.length()
+            &amp;&amp; s.charAt(l) == s.charAt(r)) {
+        // 向两边展开
+        l--; r++;
+    }
+    // 返回以 s[l] 和 s[r] 为中心的最长回文串
+    return s.substring(l + 1, r);
+    }
+
+public String longestPalindrome(String s) {
+    String res = &#34;&#34;;
+    for (int i = 0; i &lt; s.length(); i++) {
+        // 以 s[i] 为中心的最长回文子串
+        String s1 = palindrome(s, i, i);
+        // 以 s[i] 和 s[i+1] 为中心的最长回文子串
+        String s2 = palindrome(s, i, i + 1);
+        // res = longest(res, s1, s2)
+        res = res.length() &gt; s1.length() ? res : s1;
+        res = res.length() &gt; s2.length() ? res : s2;
+    }
+    return res;
+}
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2

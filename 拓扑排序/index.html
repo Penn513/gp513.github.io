@@ -31,7 +31,7 @@
                             "url": "https:\/\/penn513.github.io\/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F\/featured-image.jpeg",
                             "width":  1024 ,
                             "height":  768 
-                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  174 ,
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  254 ,
         "url": "https:\/\/penn513.github.io\/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F\/","datePublished": "2021-07-12T15:58:26+08:00","dateModified": "2021-07-12T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
         "publisher": {
             "@type": "Person",
@@ -187,7 +187,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>174 words
+                                <span class="svg-icon icon-pencil"></span>254 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>One minute
@@ -263,6 +263,9 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution:
@@ -271,6 +274,9 @@
         visited = [0] * numCourses
         adjacent = [[] for _ in range(numCourses)]
 
+        # visited中包含两个状态
+        # 1：正在访问的路径，如果遍历时遇到1，说明图中有环，无法进行拓扑排序
+        # 2：已经访问过的路径，遇到直接跳过无需重复进入该节点
         def dfs(i):
             if visited[i] == 1:
                 return False

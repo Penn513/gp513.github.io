@@ -17,3 +17,17 @@
 
 2. 强制push，覆盖远程
 `git push -u origin master -f`
+
+### 3. 下载大仓库
+1. clone最新代码
+`git clone xxx.git --depth=1`
+
+2. 历史记录
+`git fetch --unshallow`
+
+### 4. 子模块
+1. 方式一：直接clone
+`git clone --recursive xxx.git`
+
+2. 方式二： 已经clone后下载子模块
+`git submodule update --init --recursive`

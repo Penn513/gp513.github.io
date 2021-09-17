@@ -23,6 +23,8 @@ class DisjointSet(object):
         self.rank = [1] * n
 
     def get_root(self, i):
+        # 路径压缩：在查找的过程中向root节点移动，以减少层数
+        # 根节点的父节点是它自己
         if self.parent[i] != self.parent[self.parent[i]]:
             self.parent[i] = self.get_root(self.parent[i])
         return self.parent[i]

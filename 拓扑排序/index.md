@@ -15,6 +15,9 @@ class Solution:
         visited = [0] * numCourses
         adjacent = [[] for _ in range(numCourses)]
 
+        # visited中包含两个状态
+        # 1：正在访问的路径，如果遍历时遇到1，说明图中有环，无法进行拓扑排序
+        # 2：已经访问过的路径，遇到直接跳过无需重复进入该节点
         def dfs(i):
             if visited[i] == 1:
                 return False

@@ -31,7 +31,7 @@
                             "url": "https:\/\/penn513.github.io\/%E5%B9%B6%E6%9F%A5%E9%9B%86\/featured-image.png",
                             "width":  1024 ,
                             "height":  536 
-                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  1712 ,
+                        }],"genre": "posts","keywords": "Data Structures and Algorithms","wordCount":  1754 ,
         "url": "https:\/\/penn513.github.io\/%E5%B9%B6%E6%9F%A5%E9%9B%86\/","datePublished": "2021-07-15T15:58:26+08:00","dateModified": "2021-07-15T15:58:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
         "publisher": {
             "@type": "Person",
@@ -187,7 +187,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-15">2021-07-15</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>1712 words
+                                <span class="svg-icon icon-pencil"></span>1754 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>4 minutes
@@ -270,6 +270,8 @@
 </span><span class="lnt">29
 </span><span class="lnt">30
 </span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">class DisjointSet(object):
@@ -283,6 +285,8 @@
         self.rank = [1] * n
 
     def get_root(self, i):
+        # 路径压缩：在查找的过程中向root节点移动，以减少层数
+        # 根节点的父节点是它自己
         if self.parent[i] != self.parent[self.parent[i]]:
             self.parent[i] = self.get_root(self.parent[i])
         return self.parent[i]
