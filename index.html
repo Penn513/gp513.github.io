@@ -201,6 +201,25 @@
 <article itemscope itemtype="http://schema.org/Article">
     <div class="summary summary-animation" style="margin-bottom:0">
         <header><div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;"><h2 class="summary-title" itemprop="name headline">
+                    <a href="/bfs/" target="_blank">数据结构与算法 - BFS</a>
+                </h2><div class="post-meta summary-post-meta"><span class="meta-item post-category">
+                            <a href="/categories/data-structures-and-algorithms/"><span class="svg-icon icon-folder"></span>Data Structures and Algorithms</a>
+                    </span><span class="meta-item post-author"><a href="/" title="Author" rel=" author" class="author"><span class="svg-icon icon-user"></span>GP</a></span><span class="meta-item post-publish"><span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time></span><span class="meta-item post-meta-comments">
+                            <span class="svg-icon icon-comments"></span><span class="remark42__counter" data-url="https://penn513.github.io/bfs/"></span>
+                    </span></div></div>
+        </header>
+
+        <div class="article-text"><div class="content summary-content">框架1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 def BFS(start, target): queue = collections.deque() visited = set() queue.append(start) visited.add(start) step = 0 while queue: size = len(queue) for i in range(size): cur = queue.popleft() if cur == target: return step for node in cur: if not node in visited(): queue.append(node) visited.add(node) step += 1 return step 例</div></div>
+    </div>
+
+    <div class="post-tags-summary-under-footer"><footer>
+            <div class="post-tags-summary-under-footer-display" ><a class="post-tag-summary" href="/tags/data-structures-and-algorithms/" style="">Data Structures and Algorithms</a></div>
+        </footer></div>
+</article>
+
+<article itemscope itemtype="http://schema.org/Article">
+    <div class="summary summary-animation" style="margin-bottom:0">
+        <header><div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;"><h2 class="summary-title" itemprop="name headline">
                     <a href="/lrulfu/" target="_blank">数据结构与算法 - LRU &amp; LFU</a>
                 </h2><div class="post-meta summary-post-meta"><span class="meta-item post-category">
                             <a href="/categories/data-structures-and-algorithms/"><span class="svg-icon icon-folder"></span>Data Structures and Algorithms</a>
@@ -229,25 +248,6 @@
         </header>
 
         <div class="article-text"><div class="content summary-content">模板 1 - 二分查找1 2 3 4 5 6 7 8 9 10 11 12 13 14 def binary_search(nums, target): if len(nums) &lt;= 0: return -1 left, right = 0, len(nums) - 1 # 查找区间[left, right] while left &lt;= right: mid = left + (right - left) // 2 if nums[mid] == target: return mid elif</div></div>
-    </div>
-
-    <div class="post-tags-summary-under-footer"><footer>
-            <div class="post-tags-summary-under-footer-display" ><a class="post-tag-summary" href="/tags/data-structures-and-algorithms/" style="">Data Structures and Algorithms</a></div>
-        </footer></div>
-</article>
-
-<article itemscope itemtype="http://schema.org/Article">
-    <div class="summary summary-animation" style="margin-bottom:0">
-        <header><div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;"><h2 class="summary-title" itemprop="name headline">
-                    <a href="/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_blank">数据结构与算法 - 优先队列</a>
-                </h2><div class="post-meta summary-post-meta"><span class="meta-item post-category">
-                            <a href="/categories/data-structures-and-algorithms/"><span class="svg-icon icon-folder"></span>Data Structures and Algorithms</a>
-                    </span><span class="meta-item post-author"><a href="/" title="Author" rel=" author" class="author"><span class="svg-icon icon-user"></span>GP</a></span><span class="meta-item post-publish"><span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-12">2021-07-12</time></span><span class="meta-item post-meta-comments">
-                            <span class="svg-icon icon-comments"></span><span class="remark42__counter" data-url="https://penn513.github.io/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/"></span>
-                    </span></div></div>
-        </header>
-
-        <div class="article-text"><div class="content summary-content">简介优先队列算法，也成为堆队列算法。堆是一个二叉树，它的每个父节点都小于等于孩子节点。heapq实现了一个适合与Python的列表一起使用的</div></div>
     </div>
 
     <div class="post-tags-summary-under-footer"><footer>

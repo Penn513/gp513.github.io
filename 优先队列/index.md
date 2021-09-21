@@ -5,11 +5,17 @@
 
 优先队列算法，也成为堆队列算法。堆是一个二叉树，它的每个父节点都小于等于孩子节点。heapq实现了一个适合与Python的列表一起使用的最小堆排序算法，即heap[0]始终为最小元素。若要使用最大堆，可以将元素取相反数后入堆。
 
+### heapq简介
+<https://docs.python.org/zh-cn/3/library/heapq.html>
+![heapq](heapq.png "heapq")
+
 ### 例题 1 - 数据流的中位数
 <https://leetcode-cn.com/problems/find-median-from-data-stream/>
 ![数据流的中位数](数据流的中位数.png "数据流的中位数")
 ```
-
+# 两点注意：
+# 1. 我们规定奇数个元素时，queMin比queMax长度大一
+# 2. python中的heapq是最小堆，即heap[0]为最小元素，所以对于queMin应该元素取负后入堆，这样-heap[0]是其最大值
 class MedianFinder:
 
     def __init__(self):

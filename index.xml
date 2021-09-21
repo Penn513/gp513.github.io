@@ -27,6 +27,13 @@
     <guid>https://penn513.github.io/git%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[1. 子仓同步主仓 新增主仓代码库 git remote add upstream 'xxx.git' 拉取主仓代码至本地master分支 git pull upstream master 提交本地代码至远程子仓 git push 2. 强制push，覆盖远程仓库 回退本]]></description>
 </item><item>
+    <title>数据结构与算法 - BFS</title>
+    <link>https://penn513.github.io/bfs/</link>
+    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/bfs/</guid>
+    <description><![CDATA[框架1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 def BFS(start, target): queue = collections.deque() visited = set() queue.append(start) visited.add(start) step = 0 while queue: size = len(queue) for i in range(size): cur = queue.popleft() if cur == target: return step for node in cur: if not node in visited(): queue.append(node) visited.add(node) step += 1 return step 例]]></description>
+</item><item>
     <title>数据结构与算法 - LRU &amp; LFU</title>
     <link>https://penn513.github.io/lrulfu/</link>
     <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>GP</author>
     <guid>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</guid>
     <description><![CDATA[性质 单调递减栈，能表示入栈元素左边第一个比它大的元素。入栈表明本身比栈顶小，出栈表面本身比栈顶大； 单调递增栈，能表示入栈元素左边第一个比它小]]></description>
-</item><item>
-    <title>数据结构与算法 - 字典树</title>
-    <link>https://penn513.github.io/%E5%AD%97%E5%85%B8%E6%A0%91/</link>
-    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/%E5%AD%97%E5%85%B8%E6%A0%91/</guid>
-    <description><![CDATA[简介https://leetcode-cn.com/problems/short-encoding-of-words/solution/99]]></description>
 </item></channel>
 </rss>
