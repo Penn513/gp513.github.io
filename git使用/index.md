@@ -31,3 +31,15 @@
 
 2. 方式二： 已经clone后下载子模块
 `git submodule update --init --recursive`
+
+### 5. 合并提交
+合并已经push到远程仓库的commit。
+1. 查看需要合并的最近提交记录
+`git log`
+
+2. 合并最近三次的提交
+`git rebase -i HEAD~3`
+将需要被合并的commit前的pick修改为s。
+
+3. 强制提交到远程
+`git push -f`

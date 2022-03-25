@@ -3,7 +3,21 @@
         <title>All Posts - WAIT | HOPE</title>
         <link>https://penn513.github.io/posts/</link>
         <description>All Posts | WAIT | HOPE</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 15 Jul 2021 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://penn513.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Jan 2022 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://penn513.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>MonoFlex阅读笔记</title>
+    <link>https://penn513.github.io/monoflex%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Wed, 12 Jan 2022 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/monoflex%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[Abstract作者提出一个3D目标检测模型，将截断的目标解耦出来，并将多种深度估计方法结合使用。特别地，作者将特征图的边缘解耦，专门用于长]]></description>
+</item><item>
+    <title>Swin-Transformer笔记</title>
+    <link>https://penn513.github.io/swin-transformer%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Wed, 12 Jan 2022 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/swin-transformer%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[前期工作why 优美 统一建模 知识共享 VIT 示意图 问题 未考虑视觉信号特点，平移不变性，只适合分类，不适合更精细的问题 global attention，计算量跟分]]></description>
+</item><item>
     <title>数据结构与算法 - 并查集</title>
     <link>https://penn513.github.io/%E5%B9%B6%E6%9F%A5%E9%9B%86/</link>
     <pubDate>Thu, 15 Jul 2021 15:58:26 &#43;0800</pubDate>
@@ -59,19 +73,5 @@
     <author>GP</author>
     <guid>https://penn513.github.io/%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
     <description><![CDATA[简介前缀和主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。 例题 1 - 和为K的子数组https://leetcode-cn]]></description>
-</item><item>
-    <title>数据结构与算法 - 动态规划</title>
-    <link>https://penn513.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
-    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
-    <description><![CDATA[简介 状态定义 状态转移方程 初始状态 返回值 例题 1 - 打家劫舍IIhttps://leetcode-cn.com/problems/house-ro]]></description>
-</item><item>
-    <title>数据结构与算法 - 单调栈</title>
-    <link>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</link>
-    <pubDate>Mon, 12 Jul 2021 15:58:26 &#43;0800</pubDate>
-    <author>GP</author>
-    <guid>https://penn513.github.io/%E5%8D%95%E8%B0%83%E6%A0%88/</guid>
-    <description><![CDATA[性质 单调递减栈，能表示入栈元素左边第一个比它大的元素。入栈表明本身比栈顶小，出栈表面本身比栈顶大； 单调递增栈，能表示入栈元素左边第一个比它小]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Object Detection - Tag - WAIT | HOPE</title>
+        <link>https://penn513.github.io/tags/object-detection/</link>
+        <description>Object Detection - Tag - WAIT | HOPE</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Jan 2022 15:58:26 &#43;0800</lastBuildDate><atom:link href="https://penn513.github.io/tags/object-detection/" rel="self" type="application/rss+xml" /><item>
+    <title>MonoFlex阅读笔记</title>
+    <link>https://penn513.github.io/monoflex%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Wed, 12 Jan 2022 15:58:26 &#43;0800</pubDate>
+    <author>GP</author>
+    <guid>https://penn513.github.io/monoflex%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[Abstract作者提出一个3D目标检测模型，将截断的目标解耦出来，并将多种深度估计方法结合使用。特别地，作者将特征图的边缘解耦，专门用于长]]></description>
+</item></channel>
+</rss>
